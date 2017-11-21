@@ -8,7 +8,9 @@ var player = require('play-sound')(opts = {})
 
 // Forward all requests from /api to http://foo.com/api
 app.use('/audio/blocker', function(req, res) {
-
+    player.play('audio/coin-sound.mp3', function(err){
+      if (err) throw err;
+  });
 });
 
 
