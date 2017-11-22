@@ -8,13 +8,13 @@ var player = require('play-sound')(opts = {})
 
 // Forward all requests from /api to http://foo.com/api
 app.use('/coin', function(req, res) {
-	player.play('audio/coin-sound.mp3', function(err) {
+	player.play('audio/coin-sound.mp3',  { afplay: ['-v', 0.14 ] }, function(err) {
 		if (err) throw err;
 	});
 	res.send('<h2>coin</h2>');
 });
 app.use('/text/:text', function(req, res) {
-	say.speak(req.params.text);
+	say.speak(req.params.text, 'Samantha', 0.6);
 	res.send('<h2>' + req.params.text + '</h2>');
 });
 
